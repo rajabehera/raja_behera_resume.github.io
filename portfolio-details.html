@@ -1,170 +1,744 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Portfolio Details - Personal Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <title>SuDrives Partner App - Case Study</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MyResume - v4.9.2
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --dark-color: #1e293b;
+      --light-color: #f8fafc;
+      --accent-color: #f59e0b;
+      --text-color: #334155;
+      --border-color: #e2e8f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.7;
+      background: #ffffff;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 80px 0 60px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .project-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+    
+    .meta-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    /* Section Styling */
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 50px;
+      max-width: 800px;
+    }
+    
+    /* Overview Cards */
+    .overview-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .overview-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+    
+    .overview-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: white;
+    }
+    
+    .overview-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    
+    .overview-card p {
+      color: #64748b;
+      line-height: 1.8;
+      margin: 0;
+    }
+    
+    /* App Screenshots */
+    .screenshots-section {
+      background: var(--light-color);
+    }
+    
+    .screenshot-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+    
+    .screenshot-card:hover {
+      transform: scale(1.02);
+    }
+    
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .screenshot-label {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 1.1rem;
+    }
+    
+    /* Features List */
+    .feature-item {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: translateX(5px);
+    }
+    
+    .feature-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-item h4 i {
+      font-size: 1.5rem;
+    }
+    
+    .sub-feature {
+      background: var(--light-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+    
+    .sub-feature h5 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--dark-color);
+    }
+    
+    .sub-feature p {
+      color: #64748b;
+      margin: 0;
+    }
+    
+    /* Process Timeline */
+    .process-timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+    
+    .timeline-marker {
+      position: absolute;
+      left: -47px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 4px solid var(--primary-color);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-content {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .timeline-content h4 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    
+    /* Conclusion Section */
+    .conclusion-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .conclusion-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .conclusion-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .outcome-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .outcome-card i {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .outcome-card h5 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    .outcome-card p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      color: var(--primary-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 50px 0;
+      }
+      
+      .process-timeline {
+        padding-left: 30px;
+      }
+      
+      .timeline-marker {
+        left: -37px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <main id="main">
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-  
-        <div class="row gy-4">
-  
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-  
-                <div class="swiper-slide" style="display: flex;">
-                  <img src="assets/img/portfolio/sudrives-app-2.png" alt="" style="width: 90%;margin: 0 auto;">
-                </div>
-  
-                <div class="swiper-slide" style="display: flex;">
-                  <img src="assets/img/portfolio/sudrives-app-1.png" alt="" style="margin: 0 auto;">
-                </div>
-  
-                <div class="swiper-slide" style="display: flex;">
-                  <img src="assets/img/portfolio/sudrives-app.png" alt="" style="width: 90%;margin: 0 auto;">
-                </div>
-  
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <span class="project-badge">UI/UX Case Study</span>
+        <h1 class="hero-title">SuDrives Partner App</h1>
+        <p class="hero-subtitle">Revolutionizing ride management through intuitive design and seamless user experience</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Category</span>
+            <span class="meta-value">Mobile Application</span>
           </div>
-  
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project Information</h3>
-              <ul>
-                <li><strong>Category</strong>: Application</li>
-                <li><strong>Client</strong>: Sudrives Pvt. Ltd.</li>
-                <li><strong>Project date</strong>: 01 August, 2023</li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>SuDrives Partner App UI Design</h2>
-              <p>
-                The SuDrives Partner App is an intricately engineered and meticulously crafted digital solution, purposefully designed to revolutionize and optimize the intricate process of ride management for both drivers and partners within the transportation ecosystem. This innovative application serves as a powerful and indispensable tool, seamlessly integrating a diverse array of sophisticated functionalities into a cohesive, intuitive, and user-centric interface. By leveraging cutting-edge technology and employing a thoughtful, driver-focused approach, the app significantly enhances operational efficiency, empowering users to navigate the complexities of modern ride-hailing services with unprecedented ease and precision. The SuDrives Partner App not only simplifies day-to-day operations but also elevates the overall user experience, fostering increased productivity and satisfaction among its user base of dedicated drivers and valued partners.
-              </p>
-            </div>
+          <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">Sudrives Pvt. Ltd.</span>
           </div>
-  
-              <h3>Key Features</h3>
-              <ul>
-                <li><strong>Ride Creation</strong>: The ride creation feature is designed with simplicity and efficiency in mind. Drivers and partners can create rides using two methods:
-                  <ul>
-                    <li><strong>OTP Verification</strong>: For partners, the app allows ride creation through a secure OTP (One-Time Password) verification process. This ensures that the ride details are authenticated and reduces the risk of errors.</li>
-                    <li><strong>QR Code Scanning</strong>: For customers, rides can be initiated by scanning a QR code. This method provides a quick and contactless way to start a ride, enhancing the user experience.</li>
-                  </ul>
-                </li>
-                <li><strong>Ride History Management</strong>: The ride history section offers a detailed view of all past rides. Each entry in the ride history includes comprehensive information such as:
-                  <ul>
-                    <li><strong>Status Updates</strong>: Users can easily track the status of each ride, whether it's completed, ongoing, or cancelled.</li>
-                    <li><strong>Trip Details</strong>: Detailed information about each trip, including the pickup and drop-off locations, distance covered, and fare details. This helps drivers and partners to maintain accurate records of their activities.</li>
-                  </ul>
-                </li>
-                <li><strong>Wallet Transactions</strong>: Managing finances is made effortless with the app's wallet feature. Key functionalities include:
-                  <ul>
-                    <li><strong>Current Balance Display</strong>: Users can see their current wallet balance at a glance, allowing them to keep track of their earnings.</li>
-                    <li><strong>Transaction History</strong>: A detailed log of all financial transactions, including payments received and withdrawals made. This ensures transparency and helps in financial planning.</li>
-                    <li><strong>Payment Methods</strong>: Users can add and manage multiple payment methods, providing flexibility in how they receive their earnings.</li>
-                    <li><strong>Withdraw Earnings</strong>: The app allows users to withdraw their earnings seamlessly, with options to choose the withdrawal method that suits them best.</li>
-                  </ul>
-                </li>
-                <li><strong>Online/Offline Status Management</strong>: The app incorporates real-time map integration, which provides drivers with crucial information about their status and location. Features include:
-                  <ul>
-                    <li><strong>Status Toggle</strong>: Drivers can easily switch between online and offline modes, giving them control over their availability.</li>
-                    <li><strong>Location Tracking</strong>: The real-time map shows the driver's current location, helping them navigate efficiently and ensuring they are visible to potential customers when online.</li>
-                  </ul>
-                </li>
-              </ul>
-              <h3>Design Process</h3>
-              <p>
-                <strong>User Research and Personas</strong>: Conducted user research to understand the needs and pain points of cab drivers and partners. Created personas to represent the target users, guiding the design decisions.
-              </p>
-              <p>
-                <strong>Wireframes and Prototyping</strong>: Developed wireframes to outline the app's structure and layout. Created high-fidelity interactive prototypes to demonstrate the app's functionality and user flow.
-              </p>
-              <p>
-                <strong>Usability Testing</strong>: Conducted usability testing sessions with potential users to gather feedback. Iteratively improved the design based on user feedback to enhance the overall user experience.
-              </p>
-              <h3>Visual Design</h3>
-              <p>
-                Emphasized a clean and modern aesthetic with a focus on usability. Used a consistent color scheme and typography to create a cohesive look and feel. Ensured that important information is easily accessible and that actions are straightforward and intuitive.
-              </p>
-                 <h2>Conclusion</h2>
-                
-                <p>This case study demonstrates the successful application of a comprehensive user-centered design process in the development of the SuDrives Partner App. By meticulously following each stage - from initial research and conceptualization through iterative prototyping to final implementation - we were able to create a solution that effectively addresses the unique needs of drivers and partners in the ride-hailing industry.</p>
-              
-                <h3>Key Outcomes:</h3>
-                <ul>
-                  <li>A deep understanding of user needs, gathered through extensive research and analysis</li>
-                  <li>Iterative design improvements based on user feedback and usability testing</li>
-                  <li>A visually appealing interface that balances aesthetics with functionality</li>
-                  <li>Enhanced operational efficiency for drivers and partners using the app</li>
-                </ul>
-              
-                <p>The SuDrives Partner App stands as a testament to the power of user-centered design in creating digital products that not only meet but exceed user expectations. This project highlights the importance of a thorough design process in developing solutions that are both highly functional and visually compelling.</p>
-              
-                <!-- <p>The success of this app demonstrates our team's expertise in UI/UX design and our unwavering commitment to delivering exceptional digital experiences. As we move forward, the insights gained from this project will continue to inform and enhance our approach to designing user-centric solutions in the ever-evolving landscape of mobile applications.</p> -->
-         </div>
+          <div class="meta-item">
+            <span class="meta-label">Project Date</span>
+            <span class="meta-value">August 2023</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UI/UX Designer</span>
+          </div>
+        </div>
       </div>
-    </section><!-- End Portfolio Details Section -->
-  
-  </main>
-  
-  <!-- End #main -->
+    </div>
+  </section>
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Overview Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Project Overview</h2>
+          <p class="section-subtitle">The SuDrives Partner App is a comprehensive digital solution designed to transform ride management for drivers and partners in the transportation ecosystem.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-bullseye"></i>
+            </div>
+            <h3>The Challenge</h3>
+            <p>Drivers and partners needed a streamlined solution to manage rides efficiently, track earnings, and maintain operational flexibility while navigating the complexities of modern ride-hailing services.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-lightbulb"></i>
+            </div>
+            <h3>The Solution</h3>
+            <p>A user-centric mobile application that integrates ride creation, history management, wallet transactions, and real-time status tracking into one cohesive, intuitive platform.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h3>The Impact</h3>
+            <p>Enhanced operational efficiency, improved user satisfaction, and empowered drivers with tools to manage their work seamlessly while maintaining complete control over their availability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Screenshots Section -->
+  <section class="section screenshots-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">App Interface</h2>
+          <p class="section-subtitle">A clean, modern design focused on usability and efficiency</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card">
+            <img src="assets/img/portfolio/sudrives-app-1.png" alt="SuDrives App Ride Creation">
+            <div class="screenshot-label">Ride Creation & Management</div>
+          </div>
+        </div>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card">
+            <img src="assets/img/portfolio/sudrives-app-2.png" alt="SuDrives App Dashboard">
+            <div class="screenshot-label">Dashboard & Status Management</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card">
+            <img src="assets/img/portfolio/sudrives-app.png" alt="SuDrives App Wallet">
+            <div class="screenshot-label">Onboarding</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Key Features Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Key Features</h2>
+          <p class="section-subtitle">Powerful functionalities designed to simplify daily operations</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="feature-item">
+            <h4><i class="bi bi-qr-code-scan"></i> Ride Creation</h4>
+            <p>Simplified ride creation process designed for efficiency and security, offering multiple authentication methods to suit different user needs.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-shield-check"></i> OTP Verification</h5>
+                  <p>Secure One-Time Password authentication for partners, ensuring ride details are verified and reducing the risk of errors.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-upc-scan"></i> QR Code Scanning</h5>
+                  <p>Quick and contactless ride initiation through QR code scanning, providing an enhanced user experience for customers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <h4><i class="bi bi-clock-history"></i> Ride History Management</h4>
+            <p>Comprehensive ride tracking system providing detailed insights into all past trips with complete transparency.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-arrow-repeat"></i> Status Updates</h5>
+                  <p>Real-time tracking of ride status including completed, ongoing, and cancelled trips for accurate record-keeping.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-map"></i> Trip Details</h5>
+                  <p>Detailed information including pickup/drop-off locations, distance covered, and fare details for comprehensive activity logs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <h4><i class="bi bi-wallet2"></i> Wallet Transactions</h4>
+            <p>Effortless financial management with transparent transaction tracking and flexible payment options.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6 mb-3">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-cash-stack"></i> Current Balance</h5>
+                  <p>Real-time wallet balance display allowing drivers to track their earnings at a glance.</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-list-check"></i> Transaction History</h5>
+                  <p>Detailed log of all financial activities including payments received and withdrawals made for complete transparency.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-credit-card"></i> Payment Methods</h5>
+                  <p>Add and manage multiple payment methods for flexible earning management and withdrawal options.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-bank"></i> Withdraw Earnings</h5>
+                  <p>Seamless withdrawal process with multiple options to receive earnings according to user preferences.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <h4><i class="bi bi-geo-alt"></i> Online/Offline Status Management</h4>
+            <p>Real-time map integration providing drivers with complete control over their availability and location visibility.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-toggle-on"></i> Status Toggle</h5>
+                  <p>Instant switching between online and offline modes, giving drivers full control over their availability.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-pin-map"></i> Location Tracking</h5>
+                  <p>Real-time location display on map for efficient navigation and customer visibility when online.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Process Section -->
+  <section class="section" style="background: var(--light-color);">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Design Process</h2>
+          <p class="section-subtitle">A systematic approach to creating a user-centered solution</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="process-timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-people"></i> User Research & Personas</h4>
+                <p>Conducted comprehensive user research to understand the needs, pain points, and daily challenges faced by cab drivers and partners. Created detailed personas representing target users to guide design decisions and ensure the solution addressed real-world problems.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-pencil-square"></i> Wireframes & Prototyping</h4>
+                <p>Developed detailed wireframes to outline the app's structure, information architecture, and user flow. Created high-fidelity interactive prototypes demonstrating key functionalities and user interactions to validate design concepts before development.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-check-circle"></i> Usability Testing</h4>
+                <p>Conducted multiple rounds of usability testing sessions with potential users to gather qualitative and quantitative feedback. Iteratively refined the design based on user insights to enhance overall user experience and address pain points.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-palette"></i> Visual Design</h4>
+                <p>Emphasized a clean, modern aesthetic with strong focus on usability and accessibility. Implemented a consistent color scheme and typography system to create a cohesive look and feel. Ensured important information is easily accessible and actions are straightforward and intuitive throughout the interface.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusion Section -->
+  <section class="section conclusion-section">
+    <div class="container">
+      <div class="conclusion-content">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-title" style="color: white;">Project Outcomes</h2>
+            <p style="font-size: 1.2rem; opacity: 0.95;">This case study demonstrates the successful application of a comprehensive user-centered design process in developing the SuDrives Partner App. By meticulously following each stage—from initial research through iterative prototyping to final implementation—we created a solution that effectively addresses the unique needs of drivers and partners in the ride-hailing industry.</p>
+          </div>
+        </div>
+        
+        <div class="outcome-grid">
+          <div class="outcome-card">
+            <i class="bi bi-search"></i>
+            <h5>Deep User Understanding</h5>
+            <p>Comprehensive insights gathered through extensive research and analysis of user needs</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-arrow-repeat"></i>
+            <h5>Iterative Improvements</h5>
+            <p>Continuous design refinements based on user feedback and rigorous usability testing</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-eye"></i>
+            <h5>Visual Excellence</h5>
+            <p>Aesthetically appealing interface that perfectly balances form with functionality</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-speedometer2"></i>
+            <h5>Enhanced Efficiency</h5>
+            <p>Significantly improved operational efficiency for drivers and partners using the platform</p>
+          </div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-lg-10 mx-auto text-center">
+            <p style="font-size: 1.1rem; opacity: 0.95; line-height: 1.8;">The SuDrives Partner App stands as a testament to the power of user-centered design in creating digital products that not only meet but exceed user expectations. This project highlights the importance of a thorough design process in developing solutions that are both highly functional and visually compelling, ultimately contributing to a more efficient and satisfying experience for all stakeholders in the ride-hailing ecosystem.</p>
+            
+            <!-- <a href="#" class="back-btn mt-4">
+              <i class="bi bi-arrow-left"></i>
+              Back to Portfolio
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

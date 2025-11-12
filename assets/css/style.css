@@ -8,6 +8,199 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+        @import url('../vendor/boxicons/css/boxicons.min.css');
+        :root {
+            --portfolio-primary: #0d6efd;
+            --portfolio-secondary: #6c757d;
+            --portfolio-accent: #0dcaf0;
+            --portfolio-dark: #212529;
+            --portfolio-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--portfolio-dark);
+            background-color: #ffffff;
+        }
+
+        .resume-section-wrapper {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .experience-title-unique {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--portfolio-primary);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .experience-title-unique::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--portfolio-primary), var(--portfolio-accent));
+            border-radius: 2px;
+        }
+
+        .position-card-unique {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--portfolio-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .position-card-unique:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .position-card-unique::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: -12px;
+            width: 20px;
+            height: 20px;
+            background: var(--portfolio-primary);
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+        }
+
+        .job-role-unique {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--portfolio-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .job-role-unique i {
+            color: var(--portfolio-primary);
+            font-size: 1.2rem;
+        }
+
+        .job-duration-unique {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--portfolio-primary), var(--portfolio-accent));
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .company-name-unique {
+            font-style: italic;
+            color: var(--portfolio-secondary);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .responsibilities-list-unique {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .responsibilities-list-unique li {
+            
+            margin-bottom: 12px;
+            position: relative;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+ 
+
+/* Example: using bx-check via content code */
+.responsibilities-list-unique li::before {
+  font-family: 'boxicons';  /* required font */
+  content: "\ea46";         /* Unicode for bx-check */
+  font-weight: normal;
+  padding-right: 10px;
+  font-style: normal;
+  font-size: 24px;          /* adjust size as needed */
+  display: inline-block;
+  color: #22c55e;           /* optional color */
+  vertical-align: middle;
+}
+
+        .education-section-offset {
+            margin-top: 80px;
+        }
+
+        .education-card-unique {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .education-card-unique:hover {
+            border-color: var(--portfolio-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree-title-unique {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--portfolio-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .degree-title-unique i {
+            color: var(--portfolio-primary);
+        }
+
+        .graduation-year-unique {
+            display: inline-block;
+            background: var(--portfolio-secondary);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 991px) {
+            .experience-section-right {
+                margin-top: 0 !important;
+            }
+            
+            .education-section-offset {
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .experience-title-unique {
+                font-size: 1.6rem;
+            }
+            
+            .position-card-unique {
+                padding: 20px;
+            }
+        }
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
@@ -1253,7 +1446,7 @@ section {
 }
 
 
-
+.option0{ background-color: #c0f0ff;}
 .option1 { background-color: #ffcccc; } /* Pastel Pink */
 .option2 { background-color: #ccffcc; } /* Pastel Green */
 .option3 { background-color: #ccccff; } /* Pastel Purple */
@@ -1261,7 +1454,143 @@ section {
 .option5 { background-color: #ccffff; } /* Pastel Cyan */
 
 
-
+  .portfolio-section {
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            border: 1px solid #e9ecef;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .section-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffffff;
+        }
+        
+        .products-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .projects-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .applications-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .prototypes-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .ui-products-icon {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .section-title1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+        }
+        
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .item-list li {
+            padding: 0.875rem 1rem;
+            margin-bottom: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .item-list li:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .products-section .item-list li:hover {
+            border-left-color: #667eea;
+        }
+        
+        .projects-section .item-list li:hover {
+            border-left-color: #f5576c;
+        }
+        
+        .applications-section .item-list li:hover {
+            border-left-color: #00f2fe;
+        }
+        
+        .prototypes-section .item-list li:hover {
+            border-left-color: #38f9d7;
+        }
+        
+        .item-link {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+        
+        .item-link:hover {
+            color: #2c3e50;
+        }
+        
+        .badge-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            background: #28a745;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            .section-title1 {
+                font-size: 1.1rem;
+            }
+        }
 
 .instagram-container {
   position: relative;
