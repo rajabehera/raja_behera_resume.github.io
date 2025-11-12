@@ -1,164 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Portfolio Details - Personal Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <title>Sahyog Healthcare App - Case Study</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MyResume - v4.9.2
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #10b981;
+      --secondary-color: #06b6d4;
+      --dark-color: #0f172a;
+      --light-color: #f0fdf4;
+      --accent-color: #3b82f6;
+      --text-color: #334155;
+      --border-color: #d1fae5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.7;
+      background: #ffffff;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      padding: 80px 0 60px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .project-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+    
+    .meta-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    /* Section Styling */
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 50px;
+      max-width: 800px;
+    }
+    
+    /* Overview Cards */
+    .overview-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .overview-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+    
+    .overview-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: white;
+    }
+    
+    .overview-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    
+    .overview-card p {
+      color: #64748b;
+      line-height: 1.8;
+      margin: 0;
+    }
+    
+    /* App Screenshots */
+    .screenshots-section {
+      background: var(--light-color);
+    }
+    
+    .screenshot-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .screenshot-card:hover {
+      transform: scale(1.02);
+    }
+    
+    .screenshot-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .screenshot-card.large img {
+      width: 95%;
+    }
+    
+    .screenshot-card.medium img {
+      width: 80%;
+    }
+    
+    .screenshot-label {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 1.1rem;
+    }
+    
+    /* Features List */
+    .feature-item {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: translateX(5px);
+    }
+    
+    .feature-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-item h4 i {
+      font-size: 1.5rem;
+    }
+    
+    .sub-feature {
+      background: var(--light-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+    
+    .sub-feature h5 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--dark-color);
+    }
+    
+    .sub-feature p {
+      color: #64748b;
+      margin: 0;
+    }
+    
+    /* Process Timeline */
+    .process-timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+    
+    .timeline-marker {
+      position: absolute;
+      left: -47px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 4px solid var(--primary-color);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-content {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .timeline-content h4 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    
+    /* Conclusion Section */
+    .conclusion-section {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .conclusion-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .conclusion-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .outcome-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .outcome-card i {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .outcome-card h5 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    .outcome-card p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      color: var(--primary-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 50px 0;
+      }
+      
+      .process-timeline {
+        padding-left: 30px;
+      }
+      
+      .timeline-marker {
+        left: -37px;
+      }
+      
+      .screenshot-card.large img,
+      .screenshot-card.medium img {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <main id="main">
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-  
-        <div class="row gy-4">
-  
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-  
-                <div class="swiper-slide" style="display: flex;">
-                  <img src="assets/img/portfolio/shayoag-1.png" alt="" style="width: 95%; margin: 0 auto;">
-                </div>
-  
-                <div class="swiper-slide" style="display: flex;">
-                  <img src="assets/img/portfolio/shayoag-2.png" alt=""  style="width: 80%; margin: 0 auto;" >
-                </div>
-  
-                <div class="swiper-slide"  style="display: flex;">
-                  <img src="assets/img/portfolio/shayoag-3.png" alt="" style="width: 80%; margin: 0 auto;">
-                </div>
-  
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <span class="project-badge">Healthcare UI/UX Case Study</span>
+        <h1 class="hero-title">Sahyog Healthcare App</h1>
+        <p class="hero-subtitle">Connecting users with essential medical services through intuitive design and seamless healthcare access</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Category</span>
+            <span class="meta-value">Healthcare Application</span>
           </div>
-  
-        
-       
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project Information</h3>
-              <ul>
-                <li><strong>Category</strong>: Healthcare Application</li>
-                <li><strong>Client</strong>: Sahyog Pvt. Ltd.</li>
-                <li><strong>Project date</strong>: 01 November, 2023</li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>Sahyog App UI Design</h2>
-              <p>
-                The Sahyog App is a comprehensive healthcare platform designed to connect users with essential medical services. The app offers an intuitive interface for booking diagnostics, pathology tests, and doctor appointments. This solution aims to simplify the process of accessing healthcare services, making it more efficient and user-friendly.
-              </p>
-            </div>
+          <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">Sahyog Pvt. Ltd.</span>
           </div>
-  
-          <h3>Key Features</h3>
-          <ul>
-            <li><strong>Login and Registration</strong>: A secure and straightforward login process that ensures user data privacy.
-              <ul>
-                <li><strong>Phone Number Verification</strong>: Users can register and log in using their phone numbers, with an OTP verification process to ensure security.</li>
-                <li><strong>Password Authentication</strong>: Secure password entry to protect user accounts.</li>
-              </ul>
-            </li>
-            <li><strong>Service Selection</strong>: Users can easily navigate through various healthcare services offered by the app.
-              <ul>
-                <li><strong>Diagnostic Services</strong>: A wide range of diagnostic tests available from multiple labs.</li>
-                <li><strong>Pathology Services</strong>: Comprehensive pathology testing options.</li>
-                <li><strong>Doctor Appointments</strong>: Users can book appointments with doctors conveniently through the app.</li>
-              </ul>
-            </li>
-            <li><strong>Diagnostics Booking</strong>: The diagnostics section provides detailed information on available tests and pricing.
-              <ul>
-                <li><strong>Lab Selection</strong>: Users can choose from multiple labs, with clear pricing information displayed for each.</li>
-                <li><strong>Booking Confirmation</strong>: Easy booking process with instant confirmation and receipt generation.</li>
-              </ul>
-            </li>
-          </ul>
-  
-          <h3>Design Process</h3>
-          <p>
-            <strong>User Research and Personas</strong>: Conducted extensive user research to understand the healthcare needs of users. Developed personas to guide the design process.
-          </p>
-          <p>
-            <strong>Wireframes and Prototyping</strong>: Created wireframes to map out the app's structure and user flow. Developed high-fidelity prototypes to illustrate the app's functionality.
-          </p>
-          <p>
-            <strong>Usability Testing</strong>: Performed usability testing with potential users to gather feedback. Iteratively refined the design to improve user experience based on the feedback.
-          </p>
-  
-          <h3>Visual Design</h3>
-          <p>
-            Focused on a clean and modern design aesthetic. Used a consistent color scheme and typography to enhance readability and ensure a cohesive look and feel. Emphasized accessibility and ease of use throughout the design.
-          </p>
-  
-          <h2>Conclusion</h2>
-          <p>This case study showcases the successful development of the Sahyog App, a user-centric healthcare platform. Through a comprehensive design process that included user research, wireframing, prototyping, and usability testing, we were able to create an app that effectively addresses the healthcare needs of users.</p>
-        
-          <h3>Key Outcomes:</h3>
-          <ul>
-            <li>In-depth understanding of user requirements through extensive research</li>
-            <li>Iterative design enhancements based on user feedback</li>
-            <li>Visually appealing and functional interface</li>
-            <li>Streamlined access to essential healthcare services</li>
-          </ul>
-        
-          <p>The Sahyog App exemplifies the importance of user-centered design in developing digital solutions that meet and exceed user expectations. This project highlights the significance of a thorough design process in creating highly functional and visually compelling healthcare applications.</p>
+          <div class="meta-item">
+            <span class="meta-label">Project Date</span>
+            <span class="meta-value">November 2023</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UI/UX Designer</span>
+          </div>
         </div>
       </div>
-    </section><!-- End Portfolio Details Section -->
-  
-  </main>
-  <!-- End #main -->
+    </div>
+  </section>
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Overview Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Project Overview</h2>
+          <p class="section-subtitle">The Sahyog App is a comprehensive healthcare platform designed to connect users with essential medical services, offering an intuitive interface for booking diagnostics, pathology tests, and doctor appointments.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-bullseye"></i>
+            </div>
+            <h3>The Challenge</h3>
+            <p>Users needed a streamlined, accessible platform to book diagnostic tests, pathology services, and doctor appointments while ensuring security, transparency, and ease of use in healthcare service delivery.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-lightbulb"></i>
+            </div>
+            <h3>The Solution</h3>
+            <p>A user-centric healthcare application integrating secure authentication, comprehensive service selection, and streamlined booking processes for diagnostics, pathology, and medical consultations.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="overview-card">
+            <div class="overview-icon">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h3>The Impact</h3>
+            <p>Simplified healthcare access with efficient booking processes, enhanced user confidence through transparent pricing and secure authentication, and improved convenience in managing health services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Screenshots Section -->
+  <section class="section screenshots-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">App Interface</h2>
+          <p class="section-subtitle">A clean, modern design focused on healthcare accessibility and user trust</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card large">
+            <img src="assets/img/portfolio/shayoag-1.png" alt="Sahyog App Login">
+            <div class="screenshot-label">LogIn</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card medium">
+            <img src="assets/img/portfolio/shayoag-2.png" alt="Sahyog App Services">
+            <div class="screenshot-label">Service Selection</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="screenshot-card medium">
+            <img src="assets/img/portfolio/shayoag-3.png" alt="Sahyog App Booking">
+            <div class="screenshot-label">Diagnostics Booking</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- Key Features Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Key Features</h2>
+          <p class="section-subtitle">Comprehensive healthcare functionalities designed for security and convenience</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="feature-item">
+            <h4><i class="bi bi-shield-lock"></i> Login and Registration</h4>
+            <p>Secure and straightforward authentication process ensuring user data privacy and account protection through multiple verification methods.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-phone"></i> Phone Number Verification</h5>
+                  <p>Users can register and log in using their phone numbers with OTP verification process ensuring security and preventing unauthorized access.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-key"></i> Password Authentication</h5>
+                  <p>Secure password entry system to protect user accounts and maintain confidentiality of personal health information.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <h4><i class="bi bi-grid-3x3"></i> Service Selection</h4>
+            <p>Easy navigation through various healthcare services offered by the app, providing users with comprehensive medical service options at their fingertips.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6 mb-3">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-clipboard-pulse"></i> Diagnostic Services</h5>
+                  <p>Access to a wide range of diagnostic tests available from multiple accredited labs with transparent information.</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-microscope"></i> Pathology Services</h5>
+                  <p>Comprehensive pathology testing options covering all essential medical examination requirements.</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-person-badge"></i> Doctor Appointments</h5>
+                  <p>Convenient booking system for scheduling appointments with qualified doctors through the app interface.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <h4><i class="bi bi-calendar-check"></i> Diagnostics Booking</h4>
+            <p>Comprehensive diagnostics section providing detailed information on available tests with transparent pricing and easy booking confirmation process.</p>
+            
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-building"></i> Lab Selection</h5>
+                  <p>Choose from multiple accredited laboratories with clear pricing information displayed for each facility and test option.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sub-feature">
+                  <h5><i class="bi bi-check-circle"></i> Booking Confirmation</h5>
+                  <p>Streamlined booking process with instant confirmation and automatic receipt generation for record-keeping.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Design Process Section -->
+  <section class="section" style="background: var(--light-color);">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-title">Design Process</h2>
+          <p class="section-subtitle">A comprehensive, user-centered approach to healthcare application design</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="process-timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-people"></i> User Research & Personas</h4>
+                <p>Conducted extensive user research to deeply understand the healthcare needs, pain points, and expectations of users seeking medical services. Developed detailed personas representing diverse user groups to guide the design process and ensure the solution addresses real-world healthcare challenges.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-pencil-square"></i> Wireframes & Prototyping</h4>
+                <p>Created comprehensive wireframes to map out the app's structure, information architecture, and user flow for healthcare services. Developed high-fidelity prototypes to illustrate the app's functionality, demonstrating how users would navigate through diagnostics booking, service selection, and appointment scheduling.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-check-circle"></i> Usability Testing</h4>
+                <p>Performed extensive usability testing with potential users from various demographics to gather comprehensive feedback on the app's functionality and user experience. Iteratively refined the design to improve accessibility, ease of use, and trust factors based on user insights and testing results.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4><i class="bi bi-palette"></i> Visual Design</h4>
+                <p>Focused on a clean and modern design aesthetic that instills trust and confidence in healthcare services. Implemented a consistent color scheme emphasizing health and wellness, with typography choices that enhance readability. Emphasized accessibility and ease of use throughout the design, ensuring all users can navigate healthcare services comfortably.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusion Section -->
+  <section class="section conclusion-section">
+    <div class="container">
+      <div class="conclusion-content">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-title" style="color: white;">Project Outcomes</h2>
+            <p style="font-size: 1.2rem; opacity: 0.95;">This case study showcases the successful development of the Sahyog App, a user-centric healthcare platform. Through a comprehensive design process that included user research, wireframing, prototyping, and usability testing, we created an app that effectively addresses the healthcare needs of users.</p>
+          </div>
+        </div>
+        
+        <div class="outcome-grid">
+          <div class="outcome-card">
+            <i class="bi bi-search"></i>
+            <h5>In-Depth Understanding</h5>
+            <p>Comprehensive grasp of user requirements through extensive research and healthcare needs analysis</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-arrow-repeat"></i>
+            <h5>Iterative Enhancements</h5>
+            <p>Continuous design improvements based on user feedback and rigorous usability testing sessions</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-eye"></i>
+            <h5>Visually Appealing Interface</h5>
+            <p>Aesthetically pleasing and functional interface that builds trust and confidence in healthcare services</p>
+          </div>
+          
+          <div class="outcome-card">
+            <i class="bi bi-speedometer2"></i>
+            <h5>Streamlined Access</h5>
+            <p>Simplified and efficient access to essential healthcare services for all users</p>
+          </div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-lg-10 mx-auto text-center">
+            <p style="font-size: 1.1rem; opacity: 0.95; line-height: 1.8;">The Sahyog App exemplifies the importance of user-centered design in developing digital solutions that meet and exceed user expectations. This project highlights the significance of a thorough design process in creating highly functional and visually compelling healthcare applications that genuinely improve access to essential medical services while maintaining security, transparency, and ease of use.</p>
+            
+            <!-- <a href="#" class="back-btn mt-4">
+              <i class="bi bi-arrow-left"></i>
+              Back to Portfolio
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
