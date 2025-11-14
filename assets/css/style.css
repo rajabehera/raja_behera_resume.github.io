@@ -1072,7 +1072,7 @@ section {
 }
 
 .services .iconbox-orange i {
-  color: #ffa76e;
+  color: #ff7c25;
 }
 
 .services .iconbox-orange:hover .icon i {
@@ -1080,7 +1080,7 @@ section {
 }
 
 .services .iconbox-orange:hover .icon path {
-  fill: #ffa76e;
+  fill: #ff7f2a;
 }
 
 .services .iconbox-pink i {
@@ -1108,7 +1108,7 @@ section {
 }
 
 .services .iconbox-red i {
-  color: #ff5828;
+  color: #b428ff;
 }
 
 .services .iconbox-red:hover .icon i {
@@ -1116,7 +1116,7 @@ section {
 }
 
 .services .iconbox-red:hover .icon path {
-  fill: #ff5828;
+  fill: #c228ff;
 }
 
 .services .iconbox-teal i {
